@@ -3,7 +3,6 @@ package com.jiangdg.keepappalive.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.jiangdg.keepappalive.SinglePixelActivity;
 
@@ -16,7 +15,6 @@ import java.lang.ref.WeakReference;
  */
 
 public class ScreenManager {
-    private static final String TAG = "ScreenManager";
     private Context mContext;
     private static ScreenManager mSreenManager;
     // 使用弱引用，防止内存泄漏
@@ -41,8 +39,8 @@ public class ScreenManager {
 
     // 启动SinglePixelActivity
     public void startActivity(){
-        if(Contants.DEBUG)
-            Log.d(TAG,"准备启动SinglePixelActivity...");
+
+        LogHelper.error("准备启动SinglePixelActivity...");
         Intent intent = new Intent(mContext,SinglePixelActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
@@ -50,8 +48,8 @@ public class ScreenManager {
 
     // 结束SinglePixelActivity
     public void finishActivity(){
-        if(Contants.DEBUG)
-            Log.d(TAG,"准备结束SinglePixelActivity...");
+
+        LogHelper.error("准备结束SinglePixelActivity...");
         if(mActivityRef != null){
             Activity mActivity = mActivityRef.get();
             if(mActivity != null){

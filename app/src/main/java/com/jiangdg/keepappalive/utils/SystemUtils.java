@@ -2,7 +2,7 @@ package com.jiangdg.keepappalive.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.util.Log;
+
 
 import java.util.List;
 

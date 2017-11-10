@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.jiangdg.keepappalive.R;
-import com.jiangdg.keepappalive.utils.Contants;
+import com.jiangdg.keepappalive.utils.LogHelper;
 
 /**循环播放一段无声音频，以提升进程优先级
  *
@@ -29,8 +28,8 @@ public class PlayerMusicService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        if(Contants.DEBUG)
-            Log.d(TAG,TAG+"---->onCreate,启动服务");
+
+        LogHelper.error(TAG+"---->onCreate,启动服务");
         mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.silent);
         mMediaPlayer.setLooping(true);
     }
@@ -48,16 +47,16 @@ public class PlayerMusicService extends Service {
 
     private void startPlayMusic(){
         if(mMediaPlayer != null){
-            if(Contants.DEBUG)
-                Log.d(TAG,"启动后台播放音乐");
+
+            LogHelper.error("启动后台播放音乐");
             mMediaPlayer.start();
         }
     }
 
     private void stopPlayMusic(){
         if(mMediaPlayer != null){
-            if(Contants.DEBUG)
-                Log.d(TAG,"关闭后台播放音乐");
+
+            LogHelper.error(TAG + "关闭后台播放音乐");
             mMediaPlayer.stop();
         }
     }
@@ -66,8 +65,8 @@ public class PlayerMusicService extends Service {
     public void onDestroy() {
         super.onDestroy();
         stopPlayMusic();
-        if(Contants.DEBUG)
-            Log.d(TAG,TAG+"---->onCreate,停止服务");
+
+        LogHelper.error(TAG+"---->onCreate,停止服务");
         // 重启自己
         Intent intent = new Intent(getApplicationContext(),PlayerMusicService.class);
         startService(intent);

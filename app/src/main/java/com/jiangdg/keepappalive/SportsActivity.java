@@ -1,12 +1,11 @@
 package com.jiangdg.keepappalive;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Process;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +15,10 @@ import android.widget.Toast;
 import com.jiangdg.keepappalive.receiver.ScreenReceiverUtil;
 import com.jiangdg.keepappalive.service.DaemonService;
 import com.jiangdg.keepappalive.service.PlayerMusicService;
-import com.jiangdg.keepappalive.utils.Contants;
 import com.jiangdg.keepappalive.utils.HwPushManager;
 import com.jiangdg.keepappalive.utils.JobSchedulerManager;
+import com.jiangdg.keepappalive.utils.LogHelper;
 import com.jiangdg.keepappalive.utils.ScreenManager;
-import com.jiangdg.keepappalive.utils.SystemUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,7 +30,6 @@ import java.util.TimerTask;
  */
 
 public class SportsActivity extends AppCompatActivity {
-    private static final String TAG = "SportsActivity";
     private Toolbar mToolBar;
     private TextView mTvRunTime;
     private Button mBtnRun;
@@ -43,7 +40,7 @@ public class SportsActivity extends AppCompatActivity {
     private Timer mRunTimer;
     private boolean isRunning;
     // 动态注册锁屏等广播
-    private ScreenReceiverUtil mScreenListener;
+    private ScreenReceiverUtil mScreenReceiverUtil;
     // 1像素Activity管理类
     private ScreenManager mScreenManager;
     // JobService，执行系统任务
@@ -79,15 +76,18 @@ public class SportsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sports);
-        if(Contants.DEBUG)
-            Log.d(TAG,"--->onCreate");
+
+        LogHelper.error("SportsActivity--->onCreate");
         // 1. 注册锁屏广播监听器
-//        mScreenListener = new ScreenReceiverUtil(this);
-//        mScreenManager = ScreenManager.getScreenManagerInstance(this);
-//        mScreenListener.setScreenReceiverListener(mScreenListenerer);
+        mScreenReceiverUtil = new ScreenReceiverUtil(this);
+        mScreenManager = ScreenManager.getScreenManagerInstance(this);
+        mScreenReceiverUtil.setScreenReceiverListener(mScreenListenerer);
+
         // 2. 启动系统任务
-        mJobManager = JobSchedulerManager.getJobSchedulerInstance(this);
-        mJobManager.startJobScheduler();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            mJobManager = JobSchedulerManager.getJobSchedulerInstance(this);
+            mJobManager.startJobScheduler();
+        }
         // 3. 华为推送保活，允许接收透传
 //        mHwPushManager = HwPushManager.getInstance(this);
 //        mHwPushManager.startRequestToken();
@@ -111,14 +111,14 @@ public class SportsActivity extends AppCompatActivity {
             // 3. 启动前台Service
             startDaemonService();
             // 4. 启动播放音乐Service
-            startPlayMusicService();
+            //startPlayMusicService();
         }else{
             mBtnRun.setText("开始跑步");
             stopRunTimer();
             //关闭前台Service
             stopDaemonService();
             //关闭启动播放音乐Service
-            stopPlayMusicService();
+            //stopPlayMusicService();
         }
         isRunning = !isRunning;
     }
@@ -133,6 +133,7 @@ public class SportsActivity extends AppCompatActivity {
         startService(intent);
     }
 
+    //前台Service保活
     private void startDaemonService() {
         Intent intent = new Intent(SportsActivity.this, DaemonService.class);
         startService(intent);
@@ -201,8 +202,8 @@ public class SportsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(Contants.DEBUG)
-            Log.d(TAG,"--->onDestroy");
+
+        LogHelper.error("SportsActivity -->onDestroy");
         stopRunTimer();
 //        mScreenListener.stopScreenReceiverListener();
     }

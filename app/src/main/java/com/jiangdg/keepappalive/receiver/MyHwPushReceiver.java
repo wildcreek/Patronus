@@ -2,10 +2,9 @@ package com.jiangdg.keepappalive.receiver;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.huawei.android.pushagent.api.PushEventReceiver;
-import com.jiangdg.keepappalive.utils.Contants;
+import com.jiangdg.keepappalive.utils.LogHelper;
 
 import java.io.UnsupportedEncodingException;
 
@@ -26,7 +25,7 @@ public class MyHwPushReceiver extends PushEventReceiver{
      * */
     @Override
     public void onToken(Context context, String token, Bundle bundle) {
-        Log.i(TAG,"连接到华为推送服务器，token="+token);
+        LogHelper.error("MyHwPushReceiver 连接到华为推送服务器，token="+token);
     }
 
     /**
@@ -35,13 +34,13 @@ public class MyHwPushReceiver extends PushEventReceiver{
      * */
     @Override
     public boolean onPushMsg(Context context, byte[] msgBytes, Bundle bundle) {
-        if(Contants.DEBUG){
-            try {
-                Log.i(TAG,"接收透传消息："+new String(msgBytes,"UTF-8"));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
+
+        try {
+            LogHelper.error("MyHwPushReceiver 接收透传消息："+new String(msgBytes,"UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
+
         // 启动应用
 
         return false;
@@ -52,7 +51,7 @@ public class MyHwPushReceiver extends PushEventReceiver{
      * */
     @Override
     public void onPushState(Context context, boolean connectState) {
-        Log.i(TAG,"是否连接到华为推送服务器："+(connectState?"connected":"disconnected"));
+        LogHelper.error("MyHwPushReceiver 是否连接到华为推送服务器："+(connectState?"connected":"disconnected"));
     }
 
     /**

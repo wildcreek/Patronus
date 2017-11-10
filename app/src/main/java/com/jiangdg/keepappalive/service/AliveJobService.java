@@ -7,12 +7,13 @@ import android.app.job.JobService;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.jiangdg.keepappalive.SportsActivity;
 import com.jiangdg.keepappalive.utils.Contants;
+import com.jiangdg.keepappalive.utils.LogHelper;
 import com.jiangdg.keepappalive.utils.SystemUtils;
+
 
 /**JobService，支持5.0以上forcestop依然有效
  *
@@ -35,9 +36,11 @@ public class AliveJobService extends JobService {
         public boolean handleMessage(Message msg) {
             // 具体任务逻辑
             if(SystemUtils.isAPPALive(getApplicationContext(), Contants.PACKAGE_NAME)){
+                LogHelper.error("AliveJobService----->APP活着的...");
                 Toast.makeText(getApplicationContext(), "APP活着的", Toast.LENGTH_SHORT)
                         .show();
             }else{
+                LogHelper.error("AliveJobService----->APP被杀死，重启...");
                 Intent intent = new Intent(getApplicationContext(), SportsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -52,8 +55,7 @@ public class AliveJobService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters params) {
-        if(Contants.DEBUG)
-            Log.d(TAG,"KeepAliveService----->JobService服务被启动...");
+        LogHelper.error("AliveJobService----->JobService服务被启动...");
         mKeepAliveService = this;
         // 返回false，系统假设这个方法返回时任务已经执行完毕；
         // 返回true，系统假定这个任务正要被执行
@@ -65,8 +67,8 @@ public class AliveJobService extends JobService {
     @Override
     public boolean onStopJob(JobParameters params) {
         mHandler.removeMessages(MESSAGE_ID_TASK);
-        if(Contants.DEBUG)
-            Log.d(TAG,"KeepAliveService----->JobService服务被关闭");
+        LogHelper.error("AliveJobService----->JobService服务被关闭");
+
         return false;
     }
 }

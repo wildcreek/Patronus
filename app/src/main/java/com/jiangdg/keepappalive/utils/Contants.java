@@ -6,7 +6,6 @@ package com.jiangdg.keepappalive.utils;
  */
 
 public class Contants {
-    public static final boolean DEBUG = true;
 
     public static final String PACKAGE_NAME = "com.jiangdg.keepappalive";
 }

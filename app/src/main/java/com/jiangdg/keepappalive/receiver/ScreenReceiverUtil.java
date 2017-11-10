@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.util.Log;
+import com.jiangdg.keepappalive.utils.LogHelper;
 
 /** 静态监听锁屏、解锁、开屏广播
  *  a) 当用户锁屏时，将SportsActivity置于前台，同时开启1像素悬浮窗；
@@ -43,7 +43,7 @@ public class ScreenReceiverUtil {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            Log.d("KeepAppAlive","SreenLockReceiver-->监听到系统广播："+action);
+            LogHelper.error("SreenLockReceiver-->监听到系统广播："+action);
             if(mStateReceiverListener == null){
                 return;
             }

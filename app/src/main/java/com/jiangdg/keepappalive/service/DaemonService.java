@@ -7,10 +7,9 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.jiangdg.keepappalive.R;
-import com.jiangdg.keepappalive.utils.Contants;
+import com.jiangdg.keepappalive.utils.LogHelper;
 
 /**前台Service，使用startForeground
  * 这个Service尽量要轻，不要占用过多的系统资源，否则
@@ -32,8 +31,7 @@ public class DaemonService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        if(Contants.DEBUG)
-            Log.d(TAG,"DaemonService---->onCreate被调用，启动前台service");
+         LogHelper.error("DaemonService---->onCreate被调用，启动前台service");
         //如果API大于18，需要弹出一个可见通知
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
             Notification.Builder builder = new Notification.Builder(this);
@@ -65,8 +63,8 @@ public class DaemonService extends Service {
             NotificationManager mManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
             mManager.cancel(NOTICE_ID);
         }
-        if(Contants.DEBUG)
-            Log.d(TAG,"DaemonService---->onDestroy，前台service被杀死");
+
+        LogHelper.error("DaemonService---->onDestroy，前台service被杀死");
         // 重启自己
         Intent intent = new Intent(getApplicationContext(),DaemonService.class);
         startService(intent);

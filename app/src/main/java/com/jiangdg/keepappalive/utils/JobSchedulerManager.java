@@ -37,17 +37,20 @@ public class JobSchedulerManager {
     @TargetApi(21)
     public void startJobScheduler(){
         // 如果JobService已经启动或API<21，返回
+        LogHelper.error("JobSchedulerManager startJobScheduler");
         if(AliveJobService.isJobServiceAlive() || isBelowLOLLIPOP()){
+            LogHelper.error("JobSchedulerManager isJobServiceAlive ?" + AliveJobService.isJobServiceAlive() +
+            " , isBelowLOLLIPOP ? " + isBelowLOLLIPOP());
             return;
         }
         // 构建JobInfo对象，传递给JobSchedulerService
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID,new ComponentName(mContext, AliveJobService.class));
         // 设置每2秒执行一下任务
-        builder.setPeriodic(3000);
+        builder.setPeriodic(30000);
         // 设置设备重启时，执行该任务
         builder.setPersisted(true);
         // 当插入充电器，执行该任务
-        builder.setRequiresCharging(true);
+        //builder.setRequiresCharging(true);
         JobInfo info = builder.build();
         //开始定时执行该系统任务
         mJobScheduler.schedule(info);
