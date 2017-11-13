@@ -46,8 +46,8 @@
 1. 微信开源Mars SDT网络诊断组件，对网络异常进行诊断提示
 
 ---------------------------------------
-## 方案适配（待完善）
-## 适配终端
+## 方案测试（待完善）
+### 适配终端
 品牌|型号|Room版本|Android版本
 -|-|-|-
 小米|MI 5|MIUI 8.2|7.0
@@ -57,4 +57,14 @@
 Google|Nexus 5|CM |6.0.1
 魅族|MX4 Pro |Flyme OS 4.1.1.3C |4.4.4
 中兴|B2015 |MiFavor UI 3.2.0 |5.1.1
-## 适配效果
+### 测试方法
+1. 判断Service是否位于前台
+```
+dumpsys activity services com.jiangdg.keepappalive
+```
+2. 查看oom_adj值
+```
+adb shell
+ps | grep com.jiangdg.keepappalive
+cat /proc/pid/oom_adj
+```
