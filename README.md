@@ -51,7 +51,7 @@
 品牌|型号|ROM版本|Android版本
 ## 方案测试（待完善）
 ### 适配终端
-品牌|型号|Room版本|Android版本
+品牌|型号|ROM版本|Android版本
 -|-|-|-
 小米|MI 5|MIUI 8.2|7.0
 红米|Redmi Note 4x|MIUI 8.1|6.0.1
