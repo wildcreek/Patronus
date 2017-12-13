@@ -5,8 +5,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-
-import com.jiangdg.keepappalive.R;
+import com.wildcreek.patronus.R;
 import com.wildcreek.patronus.utils.LogHelper;
 
 /**循环播放一段无声音频，以提升进程优先级

@@ -7,5 +7,5 @@ package com.wildcreek.patronus.utils;
 
 public class Contants {
 
-    public static final String PACKAGE_NAME = "com.jiangdg.keepappalive";
+    public static final String PACKAGE_NAME = "com.wildcreek.keepappalive";
 }

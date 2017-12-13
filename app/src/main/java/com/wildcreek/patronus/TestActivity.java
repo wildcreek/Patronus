@@ -1,7 +1,6 @@
 package com.wildcreek.patronus;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,14 +11,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jiangdg.keepappalive.R;
-import com.wildcreek.patronus.receiver.ScreenReceiverUtil;
-import com.wildcreek.patronus.service.DaemonService;
+import com.wildcreek.patronus.manager.InvisibleNotificationManager;
+import com.wildcreek.patronus.manager.JobSchedulerManager;
+import com.wildcreek.patronus.manager.SinglePixelManager;
+import com.wildcreek.patronus.manager.SystemBroadcastManager;
+import com.wildcreek.patronus.push.HwPushManager;
 import com.wildcreek.patronus.service.PlayerMusicService;
-import com.wildcreek.patronus.utils.HwPushManager;
-import com.wildcreek.patronus.utils.JobSchedulerManager;
 import com.wildcreek.patronus.utils.LogHelper;
-import com.wildcreek.patronus.utils.ScreenManager;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -30,7 +28,7 @@ import java.util.TimerTask;
  * http://blog.csdn.net/andrexpert
  */
 
-public class SportsActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity {
     private Toolbar mToolBar;
     private TextView mTvRunTime;
     private Button mBtnRun;
@@ -40,38 +38,13 @@ public class SportsActivity extends AppCompatActivity {
     private int timeHour;
     private Timer mRunTimer;
     private boolean isRunning;
-    // 动态注册锁屏等广播
-    private ScreenReceiverUtil mScreenReceiverUtil;
     // 1像素Activity管理类
-    private ScreenManager mScreenManager;
+    private SinglePixelManager mScreenManager;
     // JobService，执行系统任务
     private JobSchedulerManager mJobManager;
     // 华为推送管理类
     private HwPushManager mHwPushManager;
 
-    private ScreenReceiverUtil.SreenStateListener mScreenListenerer = new ScreenReceiverUtil.SreenStateListener() {
-        @Override
-        public void onSreenOn() {
-            // 亮屏，移除"1像素"
-            mScreenManager.finishActivity();
-        }
-
-        @Override
-        public void onSreenOff() {
-            // 接到锁屏广播，将SportsActivity切换到可见模式
-            // "咕咚"、"乐动力"、"悦动圈"就是这么做滴
-//            Intent intent = new Intent(SportsActivity.this,SportsActivity.class);
-//            startActivity(intent);
-            // 如果你觉得，直接跳出SportActivity很不爽
-            // 那么，我们就制造个"1像素"惨案
-            mScreenManager.startActivity();
-        }
-
-        @Override
-        public void onUserPresent() {
-            // 解锁，暂不用，保留
-        }
-    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,24 +53,25 @@ public class SportsActivity extends AppCompatActivity {
 
         LogHelper.error("SportsActivity--->onCreate");
         // 1. 注册锁屏广播监听器
-        mScreenReceiverUtil = new ScreenReceiverUtil(this);
-        mScreenManager = ScreenManager.getScreenManagerInstance(this);
-        mScreenReceiverUtil.setScreenReceiverListener(mScreenListenerer);
-
-        // 2. 启动系统任务
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+//        mScreenReceiverUtil = new ScreenReceiverUtil(this);
+//        mScreenManager = SinglePixelManager.getInstance(this);
+//        mScreenReceiverUtil.setScreenReceiverListener(mScreenListener);
+        SinglePixelManager.getInstance(this).initialize();
+        // 2. 启动JobScheduler
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             mJobManager = JobSchedulerManager.getJobSchedulerInstance(this);
             mJobManager.startJobScheduler();
-        }
-        // 3. 华为推送保活，允许接收透传
+//        }
+        // 3. 监听系统广播
+        SystemBroadcastManager.getInstance(this).initialize();
+        // 4. 前台隐形通知绑定Service
+        InvisibleNotificationManager.getInstance(this).initialize();
+        // 5s. 华为推送保活，允许接收透传
 //        mHwPushManager = HwPushManager.getInstance(this);
 //        mHwPushManager.startRequestToken();
 //        mHwPushManager.isEnableReceiveNormalMsg(true);
 //        mHwPushManager.isEnableReceiverNotifyMsg(true);
-        initView();
-    }
 
-    private void initView() {
         mToolBar = (Toolbar)findViewById(R.id.toolbar_sports);
         mToolBar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         mToolBar.setTitle("跑步啦");
@@ -110,14 +84,12 @@ public class SportsActivity extends AppCompatActivity {
             mBtnRun.setText("停止跑步");
             startRunTimer();
             // 3. 启动前台Service
-            startDaemonService();
             // 4. 启动播放音乐Service
             //startPlayMusicService();
         }else{
             mBtnRun.setText("开始跑步");
             stopRunTimer();
             //关闭前台Service
-            stopDaemonService();
             //关闭启动播放音乐Service
             //stopPlayMusicService();
         }
@@ -125,32 +97,22 @@ public class SportsActivity extends AppCompatActivity {
     }
 
     private void stopPlayMusicService() {
-        Intent intent = new Intent(SportsActivity.this, PlayerMusicService.class);
+        Intent intent = new Intent(TestActivity.this, PlayerMusicService.class);
         stopService(intent);
     }
 
     private void startPlayMusicService() {
-        Intent intent = new Intent(SportsActivity.this,PlayerMusicService.class);
+        Intent intent = new Intent(TestActivity.this,PlayerMusicService.class);
         startService(intent);
     }
 
-    //前台Service保活
-    private void startDaemonService() {
-        Intent intent = new Intent(SportsActivity.this, DaemonService.class);
-        startService(intent);
-    }
-
-    private void stopDaemonService() {
-        Intent intent = new Intent(SportsActivity.this, DaemonService.class);
-        stopService(intent);
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // 禁用返回键
         if(keyCode == KeyEvent.KEYCODE_BACK){
             if(isRunning){
-                Toast.makeText(SportsActivity.this,"正在跑步",Toast.LENGTH_SHORT).show();
+                Toast.makeText(TestActivity.this,"正在跑步",Toast.LENGTH_SHORT).show();
                 return true;
             }
         }

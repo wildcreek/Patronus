@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
 
-import com.wildcreek.patronus.SportsActivity;
+import com.wildcreek.patronus.TestActivity;
 import com.wildcreek.patronus.utils.Contants;
 import com.wildcreek.patronus.utils.LogHelper;
 import com.wildcreek.patronus.utils.SystemUtils;
@@ -40,7 +40,7 @@ public class AliveJobService extends JobService {
                         .show();
             }else{
                 LogHelper.error("AliveJobService----->APP被杀死，重启...");
-                Intent intent = new Intent(getApplicationContext(), SportsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TestActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "APP被杀死，重启...", Toast.LENGTH_SHORT)

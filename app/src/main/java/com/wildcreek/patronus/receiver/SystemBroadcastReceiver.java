@@ -9,10 +9,7 @@ import android.net.wifi.WifiManager;
 import android.os.Parcelable;
 import android.widget.Toast;
 
-import com.wildcreek.patronus.SportsActivity;
-import com.wildcreek.patronus.utils.Contants;
 import com.wildcreek.patronus.utils.LogHelper;
-import com.wildcreek.patronus.utils.SystemUtils;
 
 
 /**
@@ -26,8 +23,14 @@ import com.wildcreek.patronus.utils.SystemUtils;
  * http://blog.csdn.net/andrexpert
  */
 
-public class KeepAliveReceiver extends BroadcastReceiver {
-
+public class SystemBroadcastReceiver extends BroadcastReceiver {
+    public interface SystemBroadcastListener{
+        void onBroadcastReceive();
+    }
+    private SystemBroadcastListener mSystemBroadcastListener;
+    public SystemBroadcastReceiver(SystemBroadcastListener systemBroadcastListener){
+        this.mSystemBroadcastListener = systemBroadcastListener;
+    }
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
@@ -37,15 +40,6 @@ public class KeepAliveReceiver extends BroadcastReceiver {
         // WIFI_STATE_ENABLING = 2   WIFI_STATE_ENABLED = 3  WIFI_STATE_UNKNOWN = 4
         LogHelper.error("KeepAliveReceiver---->接收到的系统广播：" + action + ", wifiState = " + wifiState + ",previous state = " + previousWifiState);
         getNetworkBroadcast(context, intent);
-        if (SystemUtils.isAPPALive(context, Contants.PACKAGE_NAME)) {
-            LogHelper.error("KeepAliveReceiver---->APP还是活着的");
-            return;
-        } else {
-            Intent intentAlive = new Intent(context, SportsActivity.class);
-            intentAlive.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intentAlive);
-            LogHelper.error("KeepAliveReceiver---->复活进程(APP)");
-        }
     }
 
     private void getNetworkBroadcast(Context context, Intent intent) {

@@ -1,4 +1,4 @@
-package com.wildcreek.patronus.utils;
+package com.wildcreek.patronus.push;
 
 import android.content.Context;
 

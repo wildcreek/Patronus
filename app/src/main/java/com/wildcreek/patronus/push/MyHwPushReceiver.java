@@ -1,4 +1,4 @@
-package com.wildcreek.patronus.receiver;
+package com.wildcreek.patronus.push;
 
 import android.content.Context;
 import android.os.Bundle;

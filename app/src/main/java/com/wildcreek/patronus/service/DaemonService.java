@@ -7,8 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-
-import com.jiangdg.keepappalive.R;
+import com.wildcreek.patronus.R;
 import com.wildcreek.patronus.utils.LogHelper;
 
 /**前台Service，使用startForeground

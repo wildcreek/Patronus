@@ -1,4 +1,4 @@
-package com.wildcreek.patronus.utils;
+package com.wildcreek.patronus.manager;
 
 import android.annotation.TargetApi;
 import android.app.job.JobInfo;
@@ -6,16 +6,9 @@ import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.Build;
-
 import com.wildcreek.patronus.service.AliveJobService;
+import com.wildcreek.patronus.utils.LogHelper;
 
-
-/**JobScheduler管理类，单例模式
- * 执行系统任务
- *
- * Created by jianddongguo on 2017/7/10.
- * http://blog.csdn.net/andrexpert
- */
 
 public class JobSchedulerManager {
     private static final int JOB_ID = 1;
