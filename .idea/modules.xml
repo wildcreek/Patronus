@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://D:\ASWorkspace\KeepingAppAlive\KeepAppAlive.iml" filepath="D:\ASWorkspace\KeepingAppAlive\KeepAppAlive.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/KeepingAppAlive.iml" filepath="$PROJECT_DIR$/.idea/KeepingAppAlive.iml" />
+      <module fileurl="file://D:\ASWorkspace\Patronus\.idea\KeepingAppAlive.iml" filepath="D:\ASWorkspace\Patronus\.idea\KeepingAppAlive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Patronus.iml" filepath="$PROJECT_DIR$/.idea/Patronus.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\ASWorkspace\Patronus\app\app.iml" filepath="D:\ASWorkspace\Patronus\app\app.iml" />
     </modules>
   </component>
 </project>
