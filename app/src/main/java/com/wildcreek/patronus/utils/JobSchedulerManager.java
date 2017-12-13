@@ -1,4 +1,4 @@
-package com.jiangdg.keepappalive.utils;
+package com.wildcreek.patronus.utils;
 
 import android.annotation.TargetApi;
 import android.app.job.JobInfo;
@@ -7,7 +7,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.os.Build;
 
-import com.jiangdg.keepappalive.service.AliveJobService;
+import com.wildcreek.patronus.service.AliveJobService;
+
 
 /**JobScheduler管理类，单例模式
  * 执行系统任务

@@ -1,4 +1,4 @@
-package com.jiangdg.keepappalive;
+package com.wildcreek.patronus;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,11 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.jiangdg.keepappalive.utils.Contants;
-import com.jiangdg.keepappalive.utils.LogHelper;
-import com.jiangdg.keepappalive.utils.ScreenManager;
-import com.jiangdg.keepappalive.utils.SystemUtils;
+import com.wildcreek.patronus.utils.Contants;
+import com.wildcreek.patronus.utils.LogHelper;
+import com.wildcreek.patronus.utils.ScreenManager;
+import com.wildcreek.patronus.utils.SystemUtils;
+
 
 /**1像素Activity
  *
@@ -41,7 +42,7 @@ public class SinglePixelActivity extends AppCompatActivity {
     protected void onDestroy() {
 
         LogHelper.error("SinglePixelActivity onDestroy--->1像素保活被终止");
-        if(! SystemUtils.isAPPALive(this,Contants.PACKAGE_NAME)){
+        if(! SystemUtils.isAPPALive(this, Contants.PACKAGE_NAME)){
             Intent intentAlive = new Intent(this, SportsActivity.class);
             intentAlive.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intentAlive);

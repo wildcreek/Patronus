@@ -1,4 +1,4 @@
-package com.jiangdg.keepappalive.service;
+package com.wildcreek.patronus.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -9,7 +9,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.jiangdg.keepappalive.R;
-import com.jiangdg.keepappalive.utils.LogHelper;
+import com.wildcreek.patronus.utils.LogHelper;
 
 /**前台Service，使用startForeground
  * 这个Service尽量要轻，不要占用过多的系统资源，否则

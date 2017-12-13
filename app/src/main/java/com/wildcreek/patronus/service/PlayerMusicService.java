@@ -1,4 +1,4 @@
-package com.jiangdg.keepappalive.service;
+package com.wildcreek.patronus.service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.jiangdg.keepappalive.R;
-import com.jiangdg.keepappalive.utils.LogHelper;
+import com.wildcreek.patronus.utils.LogHelper;
 
 /**循环播放一段无声音频，以提升进程优先级
  *

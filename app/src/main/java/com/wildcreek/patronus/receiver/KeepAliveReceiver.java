@@ -1,4 +1,4 @@
-package com.jiangdg.keepappalive.receiver;
+package com.wildcreek.patronus.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,10 +9,11 @@ import android.net.wifi.WifiManager;
 import android.os.Parcelable;
 import android.widget.Toast;
 
-import com.jiangdg.keepappalive.SportsActivity;
-import com.jiangdg.keepappalive.utils.Contants;
-import com.jiangdg.keepappalive.utils.LogHelper;
-import com.jiangdg.keepappalive.utils.SystemUtils;
+import com.wildcreek.patronus.SportsActivity;
+import com.wildcreek.patronus.utils.Contants;
+import com.wildcreek.patronus.utils.LogHelper;
+import com.wildcreek.patronus.utils.SystemUtils;
+
 
 /**
  * 监听系统广播，复活进程

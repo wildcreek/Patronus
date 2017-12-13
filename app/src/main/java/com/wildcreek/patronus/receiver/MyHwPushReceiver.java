@@ -1,10 +1,10 @@
-package com.jiangdg.keepappalive.receiver;
+package com.wildcreek.patronus.receiver;
 
 import android.content.Context;
 import android.os.Bundle;
 
 import com.huawei.android.pushagent.api.PushEventReceiver;
-import com.jiangdg.keepappalive.utils.LogHelper;
+import com.wildcreek.patronus.utils.LogHelper;
 
 import java.io.UnsupportedEncodingException;
 

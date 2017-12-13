@@ -1,4 +1,4 @@
-package com.jiangdg.keepappalive.service;
+package com.wildcreek.patronus.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;

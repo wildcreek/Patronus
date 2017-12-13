@@ -1,4 +1,4 @@
-package com.jiangdg.keepappalive.utils;
+package com.wildcreek.patronus.utils;
 
 import android.content.Context;
 

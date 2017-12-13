@@ -1,4 +1,4 @@
-package com.jiangdg.keepappalive.service;
+package com.wildcreek.patronus.service;
 
 import android.annotation.TargetApi;
 import android.app.Service;
@@ -9,11 +9,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
 
-import com.jiangdg.keepappalive.SportsActivity;
-import com.jiangdg.keepappalive.utils.Contants;
-import com.jiangdg.keepappalive.utils.LogHelper;
-import com.jiangdg.keepappalive.utils.SystemUtils;
-
+import com.wildcreek.patronus.SportsActivity;
+import com.wildcreek.patronus.utils.Contants;
+import com.wildcreek.patronus.utils.LogHelper;
+import com.wildcreek.patronus.utils.SystemUtils;
 
 /**JobService，支持5.0以上forcestop依然有效
  *

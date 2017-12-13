@@ -1,4 +1,4 @@
-package com.jiangdg.keepappalive;
+package com.wildcreek.patronus;
 
 import android.content.Intent;
 import android.os.Build;
@@ -12,13 +12,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jiangdg.keepappalive.receiver.ScreenReceiverUtil;
-import com.jiangdg.keepappalive.service.DaemonService;
-import com.jiangdg.keepappalive.service.PlayerMusicService;
-import com.jiangdg.keepappalive.utils.HwPushManager;
-import com.jiangdg.keepappalive.utils.JobSchedulerManager;
-import com.jiangdg.keepappalive.utils.LogHelper;
-import com.jiangdg.keepappalive.utils.ScreenManager;
+import com.jiangdg.keepappalive.R;
+import com.wildcreek.patronus.receiver.ScreenReceiverUtil;
+import com.wildcreek.patronus.service.DaemonService;
+import com.wildcreek.patronus.service.PlayerMusicService;
+import com.wildcreek.patronus.utils.HwPushManager;
+import com.wildcreek.patronus.utils.JobSchedulerManager;
+import com.wildcreek.patronus.utils.LogHelper;
+import com.wildcreek.patronus.utils.ScreenManager;
 
 import java.util.Timer;
 import java.util.TimerTask;
