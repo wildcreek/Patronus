@@ -3,6 +3,7 @@ package com.wildcreek.patronus;
 import android.app.Application;
 import android.content.Context;
 
+import com.wildcreek.patronus.utils.CrashHandler;
 import com.wildcreek.patronus.utils.LogHelper;
 
 /*
@@ -23,6 +24,7 @@ public class PatronusApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
+        CrashHandler.getInstance().init(this);
         LogHelper.error("PatronusApplication onCreate ");
     }
 }

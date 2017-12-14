@@ -14,7 +14,7 @@ import com.wildcreek.patronus.utils.LogHelper;
  * http://blog.csdn.net/andrexpert
  */
 
-public class PlayerMusicService extends Service {
+public class SilentPlayerService extends Service {
     private final static String TAG = "PlayerMusicService";
     private MediaPlayer mMediaPlayer;
 
@@ -67,7 +67,7 @@ public class PlayerMusicService extends Service {
 
         LogHelper.error(TAG+"---->onCreate,停止服务");
         // 重启自己
-        Intent intent = new Intent(getApplicationContext(),PlayerMusicService.class);
+        Intent intent = new Intent(getApplicationContext(),SilentPlayerService.class);
         startService(intent);
     }
 }

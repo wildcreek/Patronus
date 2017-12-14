@@ -34,7 +34,7 @@ public class CancelNoticeService extends Service {
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2){
             Notification.Builder builder = new Notification.Builder(this);
             builder.setSmallIcon(R.mipmap.ic_launcher);
-            startForeground(DaemonService.NOTICE_ID,builder.build());
+            startForeground(ForegroundService.NOTICE_ID,builder.build());
             // 开启一条线程，去移除DaemonService弹出的通知
             new Thread(new Runnable() {
                 @Override
@@ -45,7 +45,7 @@ public class CancelNoticeService extends Service {
                     stopForeground(true);
                     // 移除DaemonService弹出的通知
                     NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-                    manager.cancel(DaemonService.NOTICE_ID);
+                    manager.cancel(ForegroundService.NOTICE_ID);
                     // 任务完成，终止自己
                     stopSelf();
                 }

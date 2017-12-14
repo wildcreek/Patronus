@@ -11,7 +11,7 @@ package com.wildcreek.patronus.manager;
 import android.content.Context;
 import android.content.Intent;
 
-import com.wildcreek.patronus.service.DaemonService;
+import com.wildcreek.patronus.service.ForegroundService;
 
 public class InvisibleNotificationManager {
     private Context mContext;
@@ -28,11 +28,11 @@ public class InvisibleNotificationManager {
     }
 
     public void initialize(){
-        Intent intent = new Intent(mContext, DaemonService.class);
+        Intent intent = new Intent(mContext, ForegroundService.class);
         mContext.startService(intent);
     }
     public void unInitialize(){
-        Intent intent = new Intent(mContext, DaemonService.class);
+        Intent intent = new Intent(mContext, ForegroundService.class);
         mContext.stopService(intent);
     }
 }

@@ -8,7 +8,7 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.wildcreek.patronus.utils.Contants;
+import com.wildcreek.patronus.utils.Constants;
 import com.wildcreek.patronus.utils.LogHelper;
 import com.wildcreek.patronus.manager.SinglePixelManager;
 import com.wildcreek.patronus.utils.SystemUtils;
@@ -42,7 +42,7 @@ public class SinglePixelActivity extends AppCompatActivity {
     protected void onDestroy() {
 
         LogHelper.error("SinglePixelActivity onDestroy--->1像素保活被终止");
-        if(! SystemUtils.isAPPALive(this, Contants.PACKAGE_NAME)){
+        if(! SystemUtils.isAPPALive(this, Constants.PACKAGE_NAME)){
             Intent intentAlive = new Intent(this, TestActivity.class);
             intentAlive.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intentAlive);

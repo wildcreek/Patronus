@@ -10,7 +10,7 @@ import android.os.Message;
 import android.widget.Toast;
 
 import com.wildcreek.patronus.TestActivity;
-import com.wildcreek.patronus.utils.Contants;
+import com.wildcreek.patronus.utils.Constants;
 import com.wildcreek.patronus.utils.LogHelper;
 import com.wildcreek.patronus.utils.SystemUtils;
 
@@ -34,7 +34,7 @@ public class AliveJobService extends JobService {
         @Override
         public boolean handleMessage(Message msg) {
             // 具体任务逻辑
-            if(SystemUtils.isAPPALive(getApplicationContext(), Contants.PACKAGE_NAME)){
+            if(SystemUtils.isAPPALive(getApplicationContext(), Constants.PACKAGE_NAME)){
                 LogHelper.error("AliveJobService----->APP活着的...");
                 Toast.makeText(getApplicationContext(), "APP活着的", Toast.LENGTH_SHORT)
                         .show();

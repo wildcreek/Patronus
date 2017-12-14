@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.wildcreek.patronus.TestActivity;
 import com.wildcreek.patronus.receiver.SystemBroadcastReceiver;
-import com.wildcreek.patronus.utils.Contants;
+import com.wildcreek.patronus.utils.Constants;
 import com.wildcreek.patronus.utils.LogHelper;
 import com.wildcreek.patronus.utils.SystemUtils;
 
@@ -30,7 +30,7 @@ public class SystemBroadcastManager {
         mSystemBroadcastReceiver = new SystemBroadcastReceiver(new SystemBroadcastReceiver.SystemBroadcastListener() {
             @Override
             public void onBroadcastReceive() {
-                if (SystemUtils.isAPPALive(mContext, Contants.PACKAGE_NAME)) {
+                if (SystemUtils.isAPPALive(mContext, Constants.PACKAGE_NAME)) {
                     LogHelper.error("KeepAliveReceiver---->APP还是活着的");
                     return;
                 } else {

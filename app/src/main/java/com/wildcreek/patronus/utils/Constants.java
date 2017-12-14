@@ -5,7 +5,7 @@ package com.wildcreek.patronus.utils;
  * Created by jianddongguo on 2017/7/8.
  */
 
-public class Contants {
+public class Constants {
 
-    public static final String PACKAGE_NAME = "com.wildcreek.keepappalive";
+    public static final String PACKAGE_NAME = "com.wildcreek.patronus";
 }

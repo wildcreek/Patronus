@@ -1,6 +1,5 @@
 package com.wildcreek.patronus;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +12,10 @@ import android.widget.Toast;
 
 import com.wildcreek.patronus.manager.InvisibleNotificationManager;
 import com.wildcreek.patronus.manager.JobSchedulerManager;
+import com.wildcreek.patronus.manager.SilentPlayerManager;
 import com.wildcreek.patronus.manager.SinglePixelManager;
 import com.wildcreek.patronus.manager.SystemBroadcastManager;
 import com.wildcreek.patronus.push.HwPushManager;
-import com.wildcreek.patronus.service.PlayerMusicService;
 import com.wildcreek.patronus.utils.LogHelper;
 
 import java.util.Timer;
@@ -53,9 +52,6 @@ public class TestActivity extends AppCompatActivity {
 
         LogHelper.error("SportsActivity--->onCreate");
         // 1. 注册锁屏广播监听器
-//        mScreenReceiverUtil = new ScreenReceiverUtil(this);
-//        mScreenManager = SinglePixelManager.getInstance(this);
-//        mScreenReceiverUtil.setScreenReceiverListener(mScreenListener);
         SinglePixelManager.getInstance(this).initialize();
         // 2. 启动JobScheduler
 //        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
@@ -66,7 +62,9 @@ public class TestActivity extends AppCompatActivity {
         SystemBroadcastManager.getInstance(this).initialize();
         // 4. 前台隐形通知绑定Service
         InvisibleNotificationManager.getInstance(this).initialize();
-        // 5s. 华为推送保活，允许接收透传
+        // 5. 无声音乐播放
+        SilentPlayerManager.getInstance(this).initialize();
+        // 6. 华为推送保活，允许接收透传
 //        mHwPushManager = HwPushManager.getInstance(this);
 //        mHwPushManager.startRequestToken();
 //        mHwPushManager.isEnableReceiveNormalMsg(true);
@@ -95,17 +93,6 @@ public class TestActivity extends AppCompatActivity {
         }
         isRunning = !isRunning;
     }
-
-    private void stopPlayMusicService() {
-        Intent intent = new Intent(TestActivity.this, PlayerMusicService.class);
-        stopService(intent);
-    }
-
-    private void startPlayMusicService() {
-        Intent intent = new Intent(TestActivity.this,PlayerMusicService.class);
-        startService(intent);
-    }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
