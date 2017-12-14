@@ -1,8 +1,8 @@
 ### 本项目大量参考了以下文章和项目，按照个人需求修改了部分代码，仅供参考
 
-[探讨Android6.0及以上系统APP常驻内存(保活)实现-jiangdongguo](https://github.com/jiangdongguo/KeepingAppAlive.git)
-[Android进程保活招式大全 -腾讯 张兴华](http://dev.qq.com/topic/57ac4a0ea374c75371c08ce8)
-[Android 进程常驻-Marswin89](http://blog.csdn.net/Marswin89)
+[探讨Android6.0及以上系统APP常驻内存(保活)实现-jiangdongguo](https://github.com/jiangdongguo/KeepingAppAlive.git)\n
+[Android进程保活招式大全 -腾讯 张兴华](http://dev.qq.com/topic/57ac4a0ea374c75371c08ce8)\n
+[Android 进程常驻-Marswin89](http://blog.csdn.net/Marswin89)\n
 ---------------------------------------
 > 在遇到crash、系统回收机制回收（进程优先级、doze模式）、用户触发（滑动清理等）、锁屏黑屏、厂商定制回收机制、三方管家应用清理、后台驻留断网（如小米神隐模式）等情况下，Android应用会被杀死，或无法正常连接网络，造成无法正常提供服务。为向用户提供尽最大努力交付的高可用视频通话服务，视频通话应用需要在进程保活、网络保活等方向进行优化。
 ---------------------------------------
