@@ -1,1 +1,4 @@
-include ':app'
+include ':DemoPatronus'
+include ':LibPatronus'
+//include ':DemoMarsdaemon'
+include ':LibMarsdaemon'

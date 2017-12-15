@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:\ASWorkspace\KeepingAppAlive\KeepAppAlive.iml" filepath="D:\ASWorkspace\KeepingAppAlive\KeepAppAlive.iml" />
-      <module fileurl="file://D:\ASWorkspace\Patronus\.idea\KeepingAppAlive.iml" filepath="D:\ASWorkspace\Patronus\.idea\KeepingAppAlive.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DemoPatronus/DemoPatronus.iml" filepath="$PROJECT_DIR$/DemoPatronus/DemoPatronus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibMarsdaemon/LibMarsdaemon.iml" filepath="$PROJECT_DIR$/LibMarsdaemon/LibMarsdaemon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibPatronus/LibPatronus.iml" filepath="$PROJECT_DIR$/LibPatronus/LibPatronus.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Patronus.iml" filepath="$PROJECT_DIR$/.idea/Patronus.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
