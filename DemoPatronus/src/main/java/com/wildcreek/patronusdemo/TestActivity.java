@@ -12,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wildcreek.patronus.PatronusManager;
-import com.wildcreek.patronus.strategy.JobSchedulerManager;
-import com.wildcreek.patronus.strategy.SinglePixelManager;
+import com.wildcreek.patronus.strategy.JobSchedulerStrategy;
+import com.wildcreek.patronus.strategy.SinglePixelStrategy;
 import com.wildcreek.patronusdemo.push.HwPushManager;
 import com.wildcreek.patronusdemo.service.Service1;
 
@@ -37,9 +37,9 @@ public class TestActivity extends AppCompatActivity {
     private Timer mRunTimer;
     private boolean isRunning;
     // 1像素Activity管理类
-    private SinglePixelManager mScreenManager;
+    private SinglePixelStrategy mScreenManager;
     // JobService，执行系统任务
-    private JobSchedulerManager mJobManager;
+    private JobSchedulerStrategy mJobManager;
     // 华为推送管理类
     private HwPushManager mHwPushManager;
 

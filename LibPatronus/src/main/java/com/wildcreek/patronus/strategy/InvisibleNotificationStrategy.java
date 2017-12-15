@@ -13,16 +13,16 @@ import android.content.Intent;
 
 import com.wildcreek.patronus.service.ForegroundService;
 
-public class InvisibleNotificationManager {
+public class InvisibleNotificationStrategy {
     private Context mContext;
-    private InvisibleNotificationManager(Context mContext){
+    private InvisibleNotificationStrategy(Context mContext){
         this.mContext = mContext;
     }
-    private static InvisibleNotificationManager mInvisibleNotificationManager;
+    private static InvisibleNotificationStrategy mInvisibleNotificationManager;
     // 单例模式
-    public static InvisibleNotificationManager getInstance(Context context){
+    public static InvisibleNotificationStrategy getInstance(Context context){
         if(mInvisibleNotificationManager == null){
-            mInvisibleNotificationManager = new InvisibleNotificationManager(context);
+            mInvisibleNotificationManager = new InvisibleNotificationStrategy(context);
         }
         return mInvisibleNotificationManager;
     }

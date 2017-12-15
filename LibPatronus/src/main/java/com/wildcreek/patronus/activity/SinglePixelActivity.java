@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.wildcreek.patronus.strategy.SinglePixelManager;
+import com.wildcreek.patronus.strategy.SinglePixelStrategy;
 import com.wildcreek.patronus.utils.Constants;
 import com.wildcreek.patronus.utils.LogHelper;
 import com.wildcreek.patronus.utils.SystemUtils;
@@ -34,7 +34,7 @@ public class SinglePixelActivity extends Activity {
         attrParams.width = 300;
         mWindow.setAttributes(attrParams);
         // 绑定SinglePixelActivity到ScreenManager
-        SinglePixelManager.getInstance(this).setSingleActivity(this);
+        SinglePixelStrategy.getInstance(this).setSingleActivity(this);
     }
 
     @Override

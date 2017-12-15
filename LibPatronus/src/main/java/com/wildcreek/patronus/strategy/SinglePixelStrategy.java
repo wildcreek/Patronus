@@ -11,20 +11,20 @@ import com.wildcreek.patronus.utils.LogHelper;
 import java.lang.ref.WeakReference;
 
 
-public class SinglePixelManager {
+public class SinglePixelStrategy {
     private Context mContext;
-    private static SinglePixelManager mSinglePixelManager;
+    private static SinglePixelStrategy mSinglePixelManager;
     // 使用弱引用，防止内存泄漏
     private WeakReference<Activity> mActivityRef;
     private ScreenBroadcastReceiver mScreenBroadcastReceiver;
-    private SinglePixelManager(Context mContext){
+    private SinglePixelStrategy(Context mContext){
         this.mContext = mContext;
     }
 
     // 单例模式
-    public static SinglePixelManager getInstance(Context context){
+    public static SinglePixelStrategy getInstance(Context context){
         if(mSinglePixelManager == null){
-            mSinglePixelManager = new SinglePixelManager(context);
+            mSinglePixelManager = new SinglePixelStrategy(context);
         }
         return mSinglePixelManager;
     }

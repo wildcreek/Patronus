@@ -10,20 +10,20 @@ import com.wildcreek.patronus.service.AliveJobService;
 import com.wildcreek.patronus.utils.LogHelper;
 
 
-public class JobSchedulerManager {
+public class JobSchedulerStrategy {
     private static final int JOB_ID = 1;
-    private static JobSchedulerManager mJobManager;
+    private static JobSchedulerStrategy mJobManager;
     private JobScheduler mJobScheduler;
     private static Context mContext;
 
-    private JobSchedulerManager(Context ctxt){
+    private JobSchedulerStrategy(Context ctxt){
         this.mContext = ctxt;
         mJobScheduler = (JobScheduler)ctxt.getSystemService(Context.JOB_SCHEDULER_SERVICE);
     }
 
-    public final static JobSchedulerManager getJobSchedulerInstance(Context ctxt){
+    public final static JobSchedulerStrategy getJobSchedulerInstance(Context ctxt){
         if(mJobManager == null){
-            mJobManager = new JobSchedulerManager(ctxt);
+            mJobManager = new JobSchedulerStrategy(ctxt);
         }
         return mJobManager;
     }
