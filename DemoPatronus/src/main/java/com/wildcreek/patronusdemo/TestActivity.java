@@ -55,8 +55,7 @@ public class TestActivity extends AppCompatActivity {
         // 4. 前台隐形通知绑定Service
         // 5. 无声音乐播放
         PatronusManager.getInstance(this).intialize();
-        // 6. MarsDaemon 多进程保活方案
-        startService(new Intent(this, Service1.class));
+
         // 7. 华为推送保活，允许接收透传
 
 

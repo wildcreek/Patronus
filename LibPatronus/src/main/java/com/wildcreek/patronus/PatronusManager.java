@@ -41,6 +41,8 @@ public class PatronusManager {
         InvisibleNotificationStrategy.getInstance(mContext).initialize();
         // 5. 无声音乐播放
         //SilentPlayerManager.getInstance(this).initialize();
+
+
     }
     public void unIntialize(){
         // 1 静态注册监听系统广播
