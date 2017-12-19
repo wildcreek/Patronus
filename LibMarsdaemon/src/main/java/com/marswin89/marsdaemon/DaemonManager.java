@@ -23,11 +23,10 @@ public class DaemonManager {
     private DaemonConfigurations mConfigurations;
     private BufferedReader mBufferedReader;//release later to save time
 
-    public DaemonManager(Context mContext ) {
-        this.mConfigurations = createDaemonConfigurations();
+    public DaemonManager(Context mContext , DaemonConfigurations mConfigurations ) {
+        this.mConfigurations = mConfigurations;
         this.mContext = mContext;
     }
-
     public void init(){
         if(!isDaemonPermitting(mContext) || mConfigurations == null){
             return ;

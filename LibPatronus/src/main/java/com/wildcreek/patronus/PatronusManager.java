@@ -1,8 +1,12 @@
 package com.wildcreek.patronus;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 
+import com.marswin89.marsdaemon.DaemonConfigurations;
+import com.marswin89.marsdaemon.DaemonManager;
 import com.wildcreek.patronus.strategy.InvisibleNotificationStrategy;
 import com.wildcreek.patronus.strategy.JobSchedulerStrategy;
 import com.wildcreek.patronus.strategy.SinglePixelStrategy;
@@ -41,8 +45,38 @@ public class PatronusManager {
         InvisibleNotificationStrategy.getInstance(mContext).initialize();
         // 5. 无声音乐播放
         //SilentPlayerManager.getInstance(this).initialize();
+        // 6. MarsDaemon 多进程保活方案
+        DaemonManager daemonManager = new DaemonManager(mContext ,createDaemonConfigurations());
+        daemonManager.init();
+        Intent intent =  new Intent();
+        intent.setComponent(new ComponentName("com.wildcreek.patronusdemo","com.wildcreek.patronusdemo.service.Service1"));
+        mContext.startService(intent);
 
+    }
+    private DaemonConfigurations createDaemonConfigurations(){
+        DaemonConfigurations.DaemonConfiguration configuration1 = new DaemonConfigurations.DaemonConfiguration(
+                "com.wildcreek.patronusdemo:process1",
+                "com.wildcreek.patronusdemo.service.Service1",
+                "com.wildcreek.patronusdemo.receiver.Receiver1");
+        DaemonConfigurations.DaemonConfiguration configuration2 = new DaemonConfigurations.DaemonConfiguration(
+                "com.wildcreek.patronusdemo:process2",
+                "com.wildcreek.patronusdemo.service.Service2",
+                "com.wildcreek.patronusdemo.receiver.Receiver2");
+        DaemonConfigurations.DaemonListener listener = new PatronusManager.MyDaemonListener();
+        return new DaemonConfigurations(configuration1, configuration2, listener);
+    }
+    class MyDaemonListener implements DaemonConfigurations.DaemonListener{
+        @Override
+        public void onPersistentStart(Context context) {
+        }
 
+        @Override
+        public void onDaemonAssistantStart(Context context) {
+        }
+
+        @Override
+        public void onWatchDaemonDead() {
+        }
     }
     public void unIntialize(){
         // 1 静态注册监听系统广播

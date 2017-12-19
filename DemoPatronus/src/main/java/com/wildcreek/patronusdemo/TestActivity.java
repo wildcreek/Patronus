@@ -1,6 +1,5 @@
 package com.wildcreek.patronusdemo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wildcreek.patronus.PatronusManager;
 import com.wildcreek.patronus.strategy.JobSchedulerStrategy;
 import com.wildcreek.patronus.strategy.SinglePixelStrategy;
 import com.wildcreek.patronusdemo.push.HwPushManager;
-import com.wildcreek.patronusdemo.service.Service1;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -54,7 +51,7 @@ public class TestActivity extends AppCompatActivity {
         // 3. 启动JobScheduler
         // 4. 前台隐形通知绑定Service
         // 5. 无声音乐播放
-        PatronusManager.getInstance(this).intialize();
+        //PatronusManager.getInstance(this).intialize();
 
         // 7. 华为推送保活，允许接收透传
 

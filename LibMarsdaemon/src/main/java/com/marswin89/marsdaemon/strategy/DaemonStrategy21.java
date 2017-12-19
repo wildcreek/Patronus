@@ -1,8 +1,5 @@
 package com.marswin89.marsdaemon.strategy;
 
-import java.io.File;
-import java.io.IOException;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
@@ -13,6 +10,9 @@ import android.os.SystemClock;
 import com.marswin89.marsdaemon.DaemonConfigurations;
 import com.marswin89.marsdaemon.IDaemonStrategy;
 import com.marswin89.marsdaemon.nativ.NativeDaemonAPI21;
+
+import java.io.File;
+import java.io.IOException;
 /**
  * the strategy in android API 21.
  * 
@@ -81,7 +81,7 @@ public class DaemonStrategy21 implements IDaemonStrategy {
 						new File(indicatorDir, INDICATOR_PERSISTENT_FILENAME).getAbsolutePath(), 
 						new File(indicatorDir, OBSERVER_DAEMON_ASSISTANT_FILENAME).getAbsolutePath(),
 						new File(indicatorDir, OBSERVER_PERSISTENT_FILENAME).getAbsolutePath());
-			};
+			}
 		};
 		t.setPriority(Thread.MAX_PRIORITY);
 		t.start();

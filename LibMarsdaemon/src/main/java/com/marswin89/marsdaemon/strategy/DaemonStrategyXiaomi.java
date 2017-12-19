@@ -52,7 +52,7 @@ public class DaemonStrategyXiaomi implements IDaemonStrategy {
 						context.getPackageName(), 
 						configs.DAEMON_ASSISTANT_CONFIG.SERVICE_NAME,
 						binaryFile.getAbsolutePath());
-			};
+			}
 		};
 		t.setPriority(Thread.MAX_PRIORITY);
 		t.start();
