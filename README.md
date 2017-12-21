@@ -1,3 +1,5 @@
+ [ ![Download](https://api.bintray.com/packages/wildcreek/maven/patronus/images/download.svg) ](https://bintray.com/wildcreek/maven/patronus/_latestVersion)
+
 ### 本项目大量参考了以下文章和项目，按照个人需求修改了部分代码，仅供参考
 
 >[探讨Android6.0及以上系统APP常驻内存(保活)实现-jiangdongguo](https://github.com/jiangdongguo/KeepingAppAlive.git)</br>
