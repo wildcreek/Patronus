@@ -14,7 +14,19 @@ android:
     # The SDK version used to compile your project
     - android-26
 script:
-    - "./gradlew assembleRelease"
-    before_install:
-    - chmod +x gradlew
-    - gem install fir-cli #安装fir命令行客户端
+- "./gradlew assembleRelease"
+before_install:
+- chmod +x gradlew
+#- gem install fir-cli #安装fir命令行客户端
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: O2o06fEDsYyVp********************Kj/rPwK8O1XZnrhIbSnLOIekqKTwMA1zK/UqMliMWGCmG1vTLsDwL1GxA3ZRhTopCNYPXF4kE8iQ1TtTTMJHlPNRm4PObPu+6Tqcaj7ajkHuYqkQhVGmZyPfXgC5H4J71GQkf57YnAmDSvUXit7fsaIkb0Gxfx8nOma2EHdSHXe7g8RTD55UGg65rezuyrEKsvh8JzVqycC/cVtu6L4+s21bwR7U+UxBAOXVko0nnUiJCKnRAXu9U41i2vcfPC5/MHYcg/b2HfwYAkqx+fqVnW888FumwWru/jE3aps4b+I4Ci02b63yYgLKc0ShB5WtukfFivSZLRg1a8GW6kpgv5+5+Ntn1KcCWv4MLio/4qsRLi544Of643QFnr8arKMLZrRiAZWBh2xexAVlgyzYdfqdQEwZm5hqpfaU3vUZWx8kqvZ+hZ2/utnsPi0iD5cknz1ewHUMBl7ctz6lqgEp9K/0TFOR+YshpBTWa4HkAO2QSGcVUB83W4TM3B5pOKA/IOX6GZflnbNvsYOYYbvI0e5i3X25enKR7NPaFNljRdOOWEKLfM6CHqMdkAroUlJ57BNTHqRUX7K4ZHE8jfdY93e7LgRWGPhDsihtfuMRKr9T7uh2mCK88bkLncMgRwmhxtOfQUI=
+#  file: app/build/outputs/apk/app-release.apk
+#  skip_cleanup: true
+#  on:
+#    repo: JianxunRao/MoqiDump
+#after_deploy:
+#- fir login 5f338b***************5540d9c006 #fir账号的Token
+#- fir me #打印身份信息,验证是否登录成功
+#- fir p app/build/outputs/apk/app-release.apk #自动发布应用至fir内测平台
