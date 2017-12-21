@@ -20,6 +20,7 @@
 -keep class com.marswin89.marsdaemon.nativ.NativeDaemonAPI20{*;}
 -keep class com.marswin89.marsdaemon.nativ.NativeDaemonAPI21{*;}
 -keep class com.marswin89.marsdaemon.DaemonApplication{*;}
+-keep class com.marswin89.marsdaemon.DaemonManager{*;}
 -keep class com.marswin89.marsdaemon.DaemonClient{*;}
 -keepattributes Exceptions,InnerClasses,...
 -keep class com.marswin89.marsdaemon.DaemonConfigurations{*;}

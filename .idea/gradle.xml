@@ -9,9 +9,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/DemoPatronus" />
             <option value="$PROJECT_DIR$/LibMarsdaemon" />
             <option value="$PROJECT_DIR$/LibPatronus" />
+            <option value="$PROJECT_DIR$/Samples" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -16,13 +16,18 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs =['libs']
+        }
+    }
     buildTypes {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -34,16 +39,19 @@ publish {
     groupId = 'com.wildcreek.patronus'
     // bintray创建的package
     artifactId = 'patronus'
-    publishVersion = '1.0'
+    publishVersion = '1.1'
     website = 'https://github.com/wildcreek/Patronus'
 }
 
 dependencies {
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:26.0.1'
-    implementation project(path: ':LibMarsdaemon')
+    //API :当Lib接口发生变化时，需要重新编译本module以及所有使用本module的module
+    //implementation: 当Lib发生变化时，仅重新编译本module
+    //api project(path: ':LibMarsdaemon')
 }
