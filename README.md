@@ -1,4 +1,4 @@
- # Patronus[ ![Download](https://api.bintray.com/packages/wildcreek/maven/patronus/images/download.svg) ](https://bintray.com/wildcreek/maven/patronus/_latestVersion)
+ # Patronus[ ![Download](https://api.bintray.com/packages/wildcreek/maven/patronus/images/download.svg) ](https://bintray.com/wildcreek/maven/patronus/_latestVersion[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](LICENSE)
 
 ### 本项目大量参考了以下文章和项目，按照个人需求修改了部分代码，仅供参考
 
