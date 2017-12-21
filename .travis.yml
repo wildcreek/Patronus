@@ -13,4 +13,8 @@ android:
 
     # The SDK version used to compile your project
     - android-26
-before_install: - chmod +x gradlew
+script:
+    - "./gradlew assembleRelease"
+    before_install:
+    - chmod +x gradlew
+    - gem install fir-cli #安装fir命令行客户端
