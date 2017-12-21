@@ -11,7 +11,7 @@ android:
 #  - extra-android-m2repository
 #  - extra-android-support
 script:
-- "./gradlew :LibPatronus assembleRelease"
+- "./gradlew assembleRelease"
 before_install:
 - chmod +x gradlew
 - gem install fir-cli #安装fir命令行客户端
