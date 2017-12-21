@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.wildcreek.patronus.strategy.JobSchedulerStrategy;
 import com.wildcreek.patronus.strategy.SinglePixelStrategy;
-import com.wildcreek.patronusdemo.push.HwPushManager;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,7 +37,6 @@ public class TestActivity extends AppCompatActivity {
     // JobService，执行系统任务
     private JobSchedulerStrategy mJobManager;
     // 华为推送管理类
-    private HwPushManager mHwPushManager;
 
 
     @Override

@@ -13,9 +13,8 @@ import com.wildcreek.patronus.utils.LogHelper;
 import com.wildcreek.patronus.utils.SystemUtils;
 
 
-/**1像素Activity
- *
- * Created by jianddongguo on 2017/7/8.
+/**
+ * 1像素Activity
  */
 
 public class SinglePixelActivity extends Activity {
